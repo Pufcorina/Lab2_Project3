@@ -32,6 +32,7 @@ public class StudentTest {
         String[] params={"asa", "Ana", "932", "asan@gmail.com", "Zsu"};
         try {
             studentXMLService.add(params);
+            fail();
         } catch (ValidatorException e) {
             System.out.println(e.getMessage());
             assertTrue(true);
@@ -67,6 +68,59 @@ public class StudentTest {
         String[] params={"", "Ana", "932", "asan@gmail.com", "Zsu"};
         try {
             studentXMLService.add(params);
+            fail();
+        } catch (ValidatorException e) {
+            System.out.println(e.getMessage());
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void testEmptyStudentName() {
+        String[] params={"2234", "", "932", "asan@gmail.com", "Zsu"};
+        try {
+            studentXMLService.add(params);
+            fail();
+        } catch (ValidatorException e) {
+            System.out.println(e.getMessage());
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void testStudentName() {
+        String[] params={"2234", "Todoran Ana-Corina", "932", "asan@gmail.com", "Zsu"};
+        String[] params1={"2234", "Ankda334>", "932", "asan@gmail.com", "Zsu"};
+        try {
+            studentXMLService.add(params);
+            studentXMLService.add(params1);
+            fail();
+        } catch (ValidatorException e) {
+            System.out.println(e.getMessage());
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void testEmptyTeacherName() {
+        String[] params={"2234", "Todoran Ana-Corina", "932", "asan@gmail.com", ""};
+        try {
+            studentXMLService.add(params);
+            fail();
+        } catch (ValidatorException e) {
+            System.out.println(e.getMessage());
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void testTeacherName() {
+        String[] params={"2234", "Todoran Ana-Corina", "932", "asan@gmail.com", "Radu Gaceanu"};
+        String[] params1={"2234", "Todoran Ana-Corina", "932", "asan@gmail.com", "akldfms3"};
+        try {
+            studentXMLService.add(params);
+            studentXMLService.add(params1);
+            fail();
         } catch (ValidatorException e) {
             System.out.println(e.getMessage());
             assertTrue(true);
