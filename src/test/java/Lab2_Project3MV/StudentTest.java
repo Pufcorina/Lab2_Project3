@@ -126,4 +126,78 @@ public class StudentTest {
             assertTrue(true);
         }
     }
+
+    @Test
+    public void testEmptyGroup() {
+        String[] params={"2234", "Todoran Ana-Corina", "", "taie2234@gmail.com", "Radu Gaceanu"};
+        try {
+            studentXMLService.add(params);
+            fail();
+        } catch (ValidatorException e) {
+            System.out.println(e.getMessage());
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void testGroup() {
+        String[] params={"2234", "Todoran Ana-Corina", "932", "taie2234@gmail.com", "Radu Gaceanu"};
+        String[] params1={"2234", "Todoran Ana-Corina", "-1", "taie2234@gmail.com", "Radu Gaceanu"};
+        String[] params2={"2234", "Todoran Ana-Corina", "f", "taie2234@gmail.com", "Radu Gaceanu"};
+        try {
+            studentXMLService.add(params);
+            studentXMLService.add(params1);
+            fail();
+        } catch (ValidatorException e) {
+            System.out.println(e.getMessage());
+            assertTrue(true);
+        }
+
+        try {
+            studentXMLService.add(params2);
+            fail();
+        } catch (ValidatorException e) {
+            System.out.println(e.getMessage());
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void testEmptyEmail() {
+        String[] params={"2234", "Todoran Ana-Corina", "932", "", "Radu Gaceanu"};
+        try {
+            studentXMLService.add(params);
+            fail();
+        } catch (ValidatorException e) {
+            System.out.println(e.getMessage());
+            assertTrue(true);
+        }
+    }
+
+    @Test
+    public void testEmail() {
+        String[] params={"2234", "Todoran Ana-Corina", "932", "yuvican100@gmail.com", "Radu Gaceanu"};
+        String[] params1={"2234", "Todoran Ana-Corina", "932", "john10@somedomain.com", "Radu Gaceanu"};
+        String[] params2={"2234", "Todoran Ana-Corina", "932", "msDhoni@somedomain.com", "Radu Gaceanu"};
+        String[] params3={"2234", "Todoran Ana-Corina", "932", "'ramesh @gmail.com", "Radu Gaceanu"};
+        String[] params4={"2234", "Todoran Ana-Corina", "932", "john10@somedomain", "Radu Gaceanu"};
+        try {
+            studentXMLService.add(params);
+            studentXMLService.add(params1);
+            studentXMLService.add(params2);
+            studentXMLService.add(params3);
+            fail();
+        } catch (ValidatorException e) {
+            System.out.println(e.getMessage());
+            assertTrue(true);
+        }
+
+        try {
+            studentXMLService.add(params4);
+            fail();
+        } catch (ValidatorException e) {
+            System.out.println(e.getMessage());
+            assertTrue(true);
+        }
+    }
 }
