@@ -29,7 +29,7 @@ public class AppTest
 
     @Test
     public void addHomeworkValid() {
-        String[] params={"123", "Ana", "932", "Zsu"};
+        String[] params={"123", "Ana", "932", "12"};
         try {
             xmlService.add(params);
             fail();
@@ -41,7 +41,7 @@ public class AppTest
 
     @Test
     public void addHomeworkInvalid() {
-        String[] params={"123", "Ana", "932", "Zsu"};
+        String[] params={"123", "Ana", "932", "12"};
         try {
             xmlService.add(params);
             fail();
