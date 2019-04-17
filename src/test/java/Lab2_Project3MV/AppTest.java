@@ -50,4 +50,45 @@ public class AppTest
             TestCase.assertFalse(false);
         }
     }
+
+    @Test
+    public void addHomeworkInvalidId() {
+
+        String[] params={"123n", "Ana", "932", "12"};
+        try {
+            xmlService.add(params);
+            fail();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            TestCase.assertFalse(false);
+        }
+    }
+
+    @Test
+    public void addHomeworkInvalidName() {
+        String[] params={"123", "1234", "932", "12"};
+        try {
+            xmlService.add(params);
+            fail();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            TestCase.assertFalse(false);
+        }
+    }
+
+    @Test
+    public void addHomeworkInvalidGroup() {
+        String[] params={"123", "Name", "exampleFail", "12"};
+        try {
+            xmlService.add(params);
+            fail();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            TestCase.assertFalse(false);
+        }
+    }
+
+
+
+
 }
