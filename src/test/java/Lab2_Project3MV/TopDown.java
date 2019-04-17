@@ -18,21 +18,10 @@ import java.time.LocalDateTime;
 
 import static org.junit.Assert.assertTrue;
 
-public class BigBang {
+public class TopDown {
     private TemaLabXMLService xmlService;
     private StudentXMLService studentXMLService;
     private NotaXMLService gradeXMLService;
-
-    @Test
-    public void bigBangTheory() {
-        try {
-            test_addHomework();
-            test_addStudent();
-            test_addGrade();
-        } catch (Error e) {
-            Assert.fail();
-        }
-    }
 
     @Before
     public void setUp(){
@@ -48,6 +37,29 @@ public class BigBang {
         NotaXMLRepo gradeXMLRepo = new NotaXMLRepo(gradeValidator, "gradeiXML_test.xml");
         gradeXMLService = new NotaXMLService(gradeXMLRepo);
     }
+
+    @Test
+    public void studentAssignment(){
+        try{
+            test_addStudent();
+            test_addHomework();
+        }catch (Error e){
+            Assert.fail();
+        }
+    }
+
+    @Test
+    public void studentAssignmentGrade(){
+        try{
+            test_addStudent();
+            test_addHomework();
+            test_addGrade();
+        }catch (Error e){
+            Assert.fail();
+        }
+    }
+
+
 
     @Test
     public void test_addHomework() {
