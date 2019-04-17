@@ -10,14 +10,12 @@ import org.junit.Test;
 import static junit.framework.TestCase.*;
 
 public class StudentTest {
-    StudentValidator studentValidator;
-    StudentXMLRepo studentXMLRepo;
-    StudentXMLService studentXMLService;
+    private StudentXMLService studentXMLService;
 
     @Before
     public void setUp() {
-        studentValidator = new StudentValidator();
-        studentXMLRepo = new StudentXMLRepo(studentValidator,"StudentiXML_test.xml");
+        StudentValidator studentValidator = new StudentValidator();
+        StudentXMLRepo studentXMLRepo = new StudentXMLRepo(studentValidator, "StudentiXML_test.xml");
         studentXMLService = new StudentXMLService(studentXMLRepo);
     }
 
